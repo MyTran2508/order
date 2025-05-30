@@ -60,7 +60,7 @@ export const useGiftCardListColumns = (): ColumnDef<IGiftCard>[] => {
       cell: ({ row }) => {
         const giftCard = row.original
         return (
-          <div className="flex items-center gap-2">
+          <div className="max-w-[200px] gap-2 truncate">
             <span className="text-sm">{giftCard.title}</span>
           </div>
         )
