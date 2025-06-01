@@ -11,8 +11,6 @@ export const createGiftCardSchema = z.object({
 
 export const updateGiftCardSchema = z.object({
   slug: z.string().min(1),
-  title: z.string().min(1).max(256),
-  description: z.optional(z.string()),
   title: z.string().min(1).max(500),
   description: z.optional(z.string().max(1000)),
   points: z.coerce.number().min(1000).max(10000000),
