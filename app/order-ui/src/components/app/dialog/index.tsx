@@ -9,6 +9,7 @@ export { default as SelectedTableToRemoveDialog } from './selected-table-to-remo
 export { default as DeleteCartItemDialog } from './delete-cart-item-dialog'
 export { default as ClientAddToCartDialog } from './client-add-to-cart-dialog'
 export { default as DeleteAllCartDialog } from './delete-all-cart-dialog'
+export { default as GiftCardSelectedDialog } from './gift-card-selected-dialog'
 
 export { default as RemoveOrderItemInUpdateOrderDialog } from './remove-order-item-in-update-order-dialog'
 

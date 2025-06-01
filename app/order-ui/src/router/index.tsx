@@ -88,10 +88,6 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: ROUTE.VERIFY_EMAIL,
-        element: <SuspenseElement component={EmailVerificationPage} />,
-      },
-      {
         path: ROUTE.ABOUT,
         element: (
           <Suspense fallback={<SkeletonCart />}>
