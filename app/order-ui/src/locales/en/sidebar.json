@@ -24,6 +24,7 @@
     "contact": "Contact",
     "overview": "Overview",
     "voucher": "Voucher",
+    "voucherGroup": "Voucher Group",
     "promotion": "Promotion",
     "chefAreaManagement": "Chef Area",
     "banner": "Banner",
@@ -42,7 +43,8 @@
     "menu": "Menu",
     "aboutUs": "About Us",
     "policy": "Policy",
-    "securityTerm": "Security Term"
+    "securityTerm": "Security Term",
+    "giftCard": "Gift Card"
   },
   "footer": {
     "quickLink": "Quick Link",

@@ -38,12 +38,6 @@ export const ForgotPasswordAndResetPasswordPage = React.lazy(() =>
   })),
 )
 
-export const EmailVerificationPage = React.lazy(() =>
-  import('@/app/auth').then((module) => ({
-    default: module.EmailVerificationPage,
-  })),
-)
-
 //Views
 //----------------------------------------------//
 //Admin
@@ -386,5 +380,12 @@ export const BannerPage = React.lazy(() =>
 export const GiftCardPage = React.lazy(() =>
   import('@/app/system/gift-card').then((module) => ({
     default: module.GiftCardPage,
+  })),
+)
+
+//Client Gift card page
+export const ClientGiftCardPage = React.lazy(() =>
+  import('@/app/client/gift-card').then((module) => ({
+    default: module.ClientGiftCardPage,
   })),
 )

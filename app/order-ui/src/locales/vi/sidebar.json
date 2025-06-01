@@ -25,6 +25,7 @@
     "contact": "Liên hệ",
     "overview": "Tổng quan",
     "voucher": "Mã giảm giá",
+    "voucherGroup": "Nhóm mã giảm giá",
     "promotion": "Khuyến mãi",
     "chefAreaManagement": "Quản lý khu vực bếp",
     "banner": "Banner",
@@ -42,7 +43,8 @@
     "menu": "Thực đơn",
     "aboutUs": "Về chúng tôi",
     "policy": "Điều khoản",
-    "securityTerm": "Chính sách bảo mật"
+    "securityTerm": "Chính sách bảo mật",
+    "giftCard": "Thẻ quà tặng"
   },
   "footer": {
     "quickLink": "Liên kết nhanh",

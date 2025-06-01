@@ -18,7 +18,7 @@ import { useOrderBySlug, useUpdateOrderType } from '@/hooks'
 // import UpdateOrderSkeleton from '@/components/app/skeleton/page'
 import { OrderTypeInUpdateOrderSelect } from '@/components/app/select'
 import { ITable, IUpdateOrderTypeRequest, OrderTypeEnum } from '@/types'
-import { formatCurrency, showToast } from '@/utils'
+import { formatCurrency } from '@/utils'
 import { SystemMenuInUpdateOrderTabs } from '@/components/app/tabs'
 import UpdateOrderQuantity from './components/update-quantity'
 import { UpdateOrderItemNoteInput, UpdateOrderNoteInput } from './components'
@@ -27,7 +27,6 @@ import { OrderCountdown } from '@/components/app/countdown/OrderCountdown'
 export default function UpdateOrderPage() {
     const { t } = useTranslation('menu')
     const { t: tHelmet } = useTranslation('helmet')
-    const { t: tToast } = useTranslation('toast')
     const { slug } = useParams()
     const { mutate: updateOrderType } = useUpdateOrderType()
     const { data: order, refetch } = useOrderBySlug(slug as string)
@@ -99,21 +98,25 @@ export default function UpdateOrderPage() {
         setIsExpired(value)
     }, [])
 
+    // const handleClickPayment = () => {
+    //     // Update order type
+    //     let params: IUpdateOrderTypeRequest | null = null
+    //     if (type === OrderTypeEnum.AT_TABLE) {
+    //         params = { type: type, table: selectedTable?.slug || null, voucher: orderItems?.voucher?.slug || null }
+    //     } else {
+    //         params = { type: type, table: null, voucher: orderItems?.voucher?.slug || null }
+    //     }
+    //     updateOrderType({ slug: slug as string, params }, {
+    //         onSuccess: () => {
+    //             showToast(tToast('order.updateOrderSuccess'))
+    //             navigate(`${ROUTE.STAFF_ORDER_PAYMENT}?order=${orderItems?.slug}`)
+    //             refetch()
+    //         }
+    //     })
+    // }
+
     const handleClickPayment = () => {
-        // Update order type
-        let params: IUpdateOrderTypeRequest | null = null
-        if (type === OrderTypeEnum.AT_TABLE) {
-            params = { type: type, table: selectedTable?.slug || null, voucher: orderItems?.voucher?.slug || null }
-        } else {
-            params = { type: type, table: null, voucher: orderItems?.voucher?.slug || null }
-        }
-        updateOrderType({ slug: slug as string, params }, {
-            onSuccess: () => {
-                showToast(tToast('order.updateOrderSuccess'))
-                navigate(`${ROUTE.STAFF_ORDER_PAYMENT}?order=${orderItems?.slug}`)
-                refetch()
-            }
-        })
+        navigate(`${ROUTE.STAFF_ORDER_PAYMENT}?order=${orderItems?.slug}`)
     }
     // if (isPending) { return <UpdateOrderSkeleton /> }
 
@@ -221,7 +224,7 @@ export default function UpdateOrderPage() {
                                                     </span>
                                                 </div>
                                                 <div className="flex col-span-1 justify-center items-end h-full" >
-                                                    <RemoveOrderItemInUpdateOrderDialog onSubmit={handleRemoveOrderItemSuccess} orderItem={item} />
+                                                    <RemoveOrderItemInUpdateOrderDialog onSubmit={handleRemoveOrderItemSuccess} orderItem={item} totalOrderItems={orderItems?.orderItems.length || 0} />
                                                 </div>
                                             </div>
                                             <UpdateOrderItemNoteInput orderItem={item} />

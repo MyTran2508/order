@@ -52,22 +52,45 @@ export interface IThemeStore {
 export interface IUserStore {
   userInfo: IUserInfo | null
   setUserInfo: (userInfo: IUserInfo) => void
+  isVerifyingEmail: boolean
+  emailVerificationStatus: {
+    startedAt: number // timestamp
+  } | null
+  setEmailVerificationStatus: (
+    emailVerificationStatus: {
+      startedAt: number // timestamp
+    } | null,
+  ) => void
+  getEmailVerificationStatus: () => {
+    startedAt: number // timestamp
+  } | null
   getUserInfo: () => IUserInfo | null
+  getIsVerifyingEmail: () => boolean
+  setIsVerifyingEmail: (isVerifyingEmail: boolean) => void
   removeUserInfo: () => void
 }
 
 export interface IPaymentMethodStore {
   paymentMethod: PaymentMethod
   setPaymentMethod: (paymentMethod: PaymentMethod) => void
+  orderSlug: string
+  setOrderSlug: (orderSlug: string) => void
   qrCode: string
   setQrCode: (qrCode: string) => void
   paymentSlug: string
   setPaymentSlug: (paymentSlug: string) => void
+  clearPaymentData: () => void
   clearStore: () => void
 }
 
 export interface IPaymentStore {
+  paymentMethod: PaymentMethod
+  setPaymentMethod: (paymentMethod: PaymentMethod) => void
   orderSlug: string
   setOrderSlug: (orderSlug: string) => void
+  qrCode: string
+  setQrCode: (qrCode: string) => void
+  paymentSlug: string
+  setPaymentSlug: (paymentSlug: string) => void
   clearStore: () => void
 }

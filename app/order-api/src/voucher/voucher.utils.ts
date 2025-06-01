@@ -100,6 +100,18 @@ export class VoucherUtils {
       if (user.role.name === RoleEnum.Customer) {
         // user order
         if (voucher.isVerificationIdentity) {
+          // check user already verify email or not
+          if (!user.isVerifiedEmail) {
+            this.logger.warn(
+              `User ${user.slug} must verify email to use voucher`,
+              context,
+            );
+            throw new VoucherException(
+              VoucherValidation.MUST_VERIFY_EMAIL_TO_USE_VOUCHER,
+            );
+          }
+
+          // check number of voucher used by user
           const orders = await this.orderUtils.getBulkOrders({
             where: {
               owner: {
@@ -263,6 +275,17 @@ export class VoucherUtils {
         VoucherValidation.ORDER_VALUE_LESS_THAN_MIN_ORDER_VALUE,
       );
     }
+    return true;
+  }
+
+  async validateMinOrderValueForUpdateOrderItem(
+    voucher: Voucher,
+    order: Order,
+  ): Promise<boolean> {
+    const context = `${VoucherUtils.name}.${this.validateMinOrderValue.name}`;
+    const subtotal = await this.orderUtils.getOrderSubtotal(order);
+    if (voucher.minOrderValue > subtotal) return false;
+    this.logger.log('Validate voucher for update order item success', context);
     return true;
   }
 }

@@ -57,6 +57,7 @@
     "handleCancelOrderSuccess": "Order canceled successfully",
     "addNewOrderItemSuccess": "Item added to order successfully",
     "deleteOrderItemSuccess": "Order item deleted successfully",
+    "orderCanceled": "Order has been canceled and you will be redirected to the menu",
     "updateOrderTypeSuccess": "Order type updated successfully",
     "createOrderTrackingByStaffSuccess": "Order assigned to staff successfully",
     "createOrderTrackingByRobotSuccess": "Order assigned to robot successfully",
@@ -362,8 +363,16 @@
     "chefOrderMustBeAccepted": "Chef order must be accepted",
     "voucherGroupAlreadyExists": "Voucher group already exists",
     "voucherVerificationIdentity": "This voucher requires login to use!",
+    "minOrderValueNotMet": "Order value must be greater than minimum required",
     "createGiftCardSuccess": "Gift card created successfully",
     "updateGiftCardSuccess": "Gift card updated successfully",
-    "deleteGiftCardSuccess": "Gift card deleted successfully"
+    "deleteGiftCardSuccess": "Gift card deleted successfully",
+    "emailVerified": "Email verified successfully",
+    "emailTokenExists": "OTP is still valid. Please check your email for the code",
+    "emailTokenNotFound": "OTP not found",
+    "emailTokenExpired": "OTP expired",
+    "errorWhenConfirmEmailVerification": "Error when confirming email verification",
+    "orderAlreadyHasPayment": "Order already has payment QR code!",
+    "qrCodeRestored": "Payment QR code has been restored"
   }
 }
