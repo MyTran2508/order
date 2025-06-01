@@ -57,6 +57,7 @@
     "handleCancelOrderSuccess": "Hủy đơn hàng thành công",
     "addNewOrderItemSuccess": "Thêm món vào đơn hàng thành công",
     "deleteOrderItemSuccess": "Xóa món khỏi đơn hàng thành công",
+    "orderCanceled": "Đơn hàng đã được hủy và bạn sẽ được chuyển hướng về thực đơn",
     "updateOrderTypeSuccess": "Cập nhật loại đơn hàng thành công",
     "createOrderTrackingByStaffSuccess": "Phân công đơn hàng cho nhân viên thành công",
     "createOrderTrackingByRobotSuccess": "Phân công đơn hàng cho robot thành công",
@@ -306,6 +307,15 @@
     "voucherNoRemainingUsage": "Voucher đã hết số lần sử dụng",
     "createGiftCardSuccess": "Tạo thẻ quà tặng thành công",
     "updateGiftCardSuccess": "Cập nhật thẻ quà tặng thành công",
-    "deleteGiftCardSuccess": "Xóa thẻ quà tặng thành công"
+    "deleteGiftCardSuccess": "Xóa thẻ quà tặng thành công",
+    "exportPDFVouchersError": "Lỗi khi xuất hóa đơn voucher",
+    "exportVouchersSuccess": "Xuất voucher thành công",
+    "ownerNotFoundForVoucher": "Vui lòng đăng nhập để dùng cho voucher này!",
+    "emailTokenExists": "Mã OTP chưa hết hạn. Vui lòng kiểm tra email để lấy mã OTP.",
+    "emailTokenNotFound": "Mã OTP không tồn tại",
+    "emailTokenExpired": "Mã OTP đã hết hạn",
+    "errorWhenConfirmEmailVerification": "Lỗi khi xác thực email",
+    "orderAlreadyHasPayment": "Đơn hàng đã có QR code thanh toán!",
+    "qrCodeRestored": "QR code thanh toán đã được khôi phục"
   }
 }

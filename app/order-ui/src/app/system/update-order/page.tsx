@@ -98,6 +98,23 @@ export default function UpdateOrderPage() {
         setIsExpired(value)
     }, [])
 
+    // const handleClickPayment = () => {
+    //     // Update order type
+    //     let params: IUpdateOrderTypeRequest | null = null
+    //     if (type === OrderTypeEnum.AT_TABLE) {
+    //         params = { type: type, table: selectedTable?.slug || null, voucher: orderItems?.voucher?.slug || null }
+    //     } else {
+    //         params = { type: type, table: null, voucher: orderItems?.voucher?.slug || null }
+    //     }
+    //     updateOrderType({ slug: slug as string, params }, {
+    //         onSuccess: () => {
+    //             showToast(tToast('order.updateOrderSuccess'))
+    //             navigate(`${ROUTE.STAFF_ORDER_PAYMENT}?order=${orderItems?.slug}`)
+    //             refetch()
+    //         }
+    //     })
+    // }
+
     const handleClickPayment = () => {
         navigate(`${ROUTE.STAFF_ORDER_PAYMENT}?order=${orderItems?.slug}`)
     }
@@ -207,7 +224,7 @@ export default function UpdateOrderPage() {
                                                     </span>
                                                 </div>
                                                 <div className="flex col-span-1 justify-center items-end h-full" >
-                                                    <RemoveOrderItemInUpdateOrderDialog onSubmit={handleRemoveOrderItemSuccess} orderItem={item} />
+                                                    <RemoveOrderItemInUpdateOrderDialog onSubmit={handleRemoveOrderItemSuccess} orderItem={item} totalOrderItems={orderItems?.orderItems.length || 0} />
                                                 </div>
                                             </div>
                                             <UpdateOrderItemNoteInput orderItem={item} />
