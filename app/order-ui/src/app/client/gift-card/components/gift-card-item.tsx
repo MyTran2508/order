@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Gift, Star } from 'lucide-react'
+import { CoinsIcon, Gift } from 'lucide-react'
 import { formatCurrency } from '@/utils'
 import { publicFileURL } from '@/constants'
 import { IGiftCard } from '@/types'
@@ -98,7 +98,7 @@ export default function GiftCardItem({ card, index }: GiftCardItemProps) {
             <div
               className={`flex items-center gap-1 ${isMobile ? 'mb-1' : ''}`}
             >
-              <Star className="h-4 w-4 text-yellow-500" />
+              <CoinsIcon className="h-5 w-5 text-yellow-500" />
               <span
                 className={`${isMobile ? 'text-sm' : 'text-xl'} font-bold text-primary`}
               >
