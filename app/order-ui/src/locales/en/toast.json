@@ -377,6 +377,7 @@
     "errorWhenConfirmEmailVerification": "Error when confirming email verification",
     "orderAlreadyHasPayment": "Order already has payment QR code!",
     "qrCodeRestored": "Payment QR code has been restored",
-    "giftCardValidationError": "Please check information gift card"
+    "giftCardValidationError": "Please check information gift card",
+    "giftCardUpdated": "Gift card updated! Please try again"
   }
 }
