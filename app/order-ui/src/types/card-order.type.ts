@@ -66,6 +66,7 @@ export interface IGiftCardCartItem {
   price: number
   quantity: number
   receipients: IReceiverGiftCardCart[]
+  type?: string
 }
 
 export interface IReceiverGiftCardCart {
