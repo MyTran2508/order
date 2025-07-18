@@ -191,6 +191,8 @@
     "orderStatus": "Order status",
     "cash": "Cash",
     "bankTransfer": "Bank transfer",
+    "point": "Coin",
+    "deductedCoinAmount": "Deducted coin amount",
     "deliveryOrderType": "Delivery order type",
     "pending": "Pending",
     "paid": "Paid",
@@ -270,6 +272,7 @@
     "downloadQRCode": "Download QR code",
     "exportOrderProvisionalBill": "Export provisional bill",
     "noQRCode": "No QR code",
-    "latePaymentNote": "Note: If you pay after the displayed time, the order may not be recognized even if the transaction is successful."
+    "latePaymentNote": "Note: If you pay after the displayed time, the order may not be recognized even if the transaction is successful.",
+    "point": "Coin payment"
   }
 }
