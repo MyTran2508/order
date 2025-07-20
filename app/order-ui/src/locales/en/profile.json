@@ -94,6 +94,8 @@
     "allTransactions": "All Transactions",
     "applyFilter": "Apply Filter",
     "clearFilter": "Clear Filter",
-    "transactionType": "Transaction Type"
+    "transactionType": "Transaction Type",
+    "coinEarned": "Coin earned",
+    "coinSpent": "Coin used"
   }
 }
