@@ -1,4 +1,4 @@
-import { GiftCardStatus } from '@/constants'
+import { GiftCardStatus, GiftCardType } from '@/constants'
 import { ICardOrderResponse } from './card-order.type'
 
 export interface IGiftCard {
@@ -76,4 +76,20 @@ export interface IGiftCardDetail {
   createdAt: string
   slug: string
   serial: string
+}
+
+export interface IGiftCardFlag {
+  slug: string
+  name: string
+  features: IGiftCardFlagFeature[]
+  order: number
+}
+
+export interface IGiftCardFlagFeature {
+  slug: string
+  groupName: string
+  groupSlug: string
+  name: GiftCardType
+  isLocked: boolean
+  order: number
 }

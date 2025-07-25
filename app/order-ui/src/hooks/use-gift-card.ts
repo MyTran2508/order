@@ -17,6 +17,9 @@ import {
   getCardOrder,
   cancelCardOrder,
   initiateCardOrderPayment,
+  getFeatureFlagGroups,
+  getFeatureFlagsByGroup,
+  bulkToggleFeatureFlags,
 } from '@/api'
 import { useEffect } from 'react'
 import { useGiftCardStore } from '@/stores'
@@ -140,6 +143,28 @@ export const useInitiateCardOrderPayment = () => {
   return useMutation({
     mutationFn: async (slug: string) => {
       return initiateCardOrderPayment(slug)
+    },
+  })
+}
+
+export const useGetFeatureFlagsByGroup = (group: string) => {
+  return useQuery({
+    queryKey: ['feature-flags', group],
+    queryFn: () => getFeatureFlagsByGroup(group),
+  })
+}
+
+export const useGetFeatureFlagGroups = () => {
+  return useQuery({
+    queryKey: ['feature-flag-groups'],
+    queryFn: getFeatureFlagGroups,
+  })
+}
+
+export const useBulkToggleFeatureFlags = () => {
+  return useMutation({
+    mutationFn: async (updates: { slug: string; isLocked: boolean }[]) => {
+      return bulkToggleFeatureFlags(updates)
     },
   })
 }

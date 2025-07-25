@@ -8,6 +8,8 @@ import {
   ICardOrderRequest,
   ICardOrderResponse,
   IGiftCardDetail,
+  IGiftCardFlag,
+  IGiftCardFlagFeature,
 } from '@/types'
 import { http } from '@/utils'
 
@@ -92,5 +94,32 @@ export async function getGiftCardBySlug(
   const response = await http.get<IApiResponse<IGiftCardDetail>>(
     `/gift-card/${slug}`,
   )
+  return response.data
+}
+
+export async function getFeatureFlagsByGroup(
+  group: string,
+): Promise<IApiResponse<IGiftCardFlagFeature[]>> {
+  const response = await http.get<IApiResponse<IGiftCardFlagFeature[]>>(
+    `/feature-flag`,
+    {
+      params: { group },
+    },
+  )
+  return response.data
+}
+
+export async function getFeatureFlagGroups(): Promise<
+  IApiResponse<IGiftCardFlag>
+> {
+  const response =
+    await http.get<IApiResponse<IGiftCardFlag>>(`/feature-flag/group`)
+  return response.data
+}
+
+export async function bulkToggleFeatureFlags(
+  updates: { slug: string; isLocked: boolean }[],
+): Promise<void> {
+  const response = await http.patch(`/feature-flag/bulk-toggle`, { updates })
   return response.data
 }
