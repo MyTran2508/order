@@ -18,6 +18,7 @@ import {
   cancelCardOrder,
   initiateCardOrderPayment,
   useGiftCard,
+  getGiftCardBySlug,
 } from '@/api'
 import { useEffect } from 'react'
 import { useGiftCardStore } from '@/stores'
@@ -123,11 +124,12 @@ export const useSyncGiftCard = (
   }
 }
 
-export const useGetCardOrder = (slug: string) => {
+export const useGetCardOrder = (slug: string, enable: boolean = true) => {
   return useQuery({
     queryKey: [QUERYKEY.cardOrder, slug],
     queryFn: () => getCardOrder(slug),
     refetchOnWindowFocus: false,
+    enabled: enable,
   })
 }
 
@@ -147,7 +149,6 @@ export const useInitiateCardOrderPayment = () => {
   })
 }
 
-
 export const useUseGiftCard = () => {
   const { t } = useTranslation(['toast'])
 
@@ -156,5 +157,13 @@ export const useUseGiftCard = () => {
     onSuccess: () => {
       showToast(t('toast.giftCardUsedSuccess'))
     },
+  })
+}
+
+export const useGetGiftCardBySlug = (slug: string, enable: boolean = true) => {
+  return useQuery({
+    queryKey: [QUERYKEY.giftCards, slug],
+    queryFn: () => getGiftCardBySlug(slug),
+    enabled: !!slug && enable,
   })
 }
