@@ -76,6 +76,9 @@ export interface IGiftCardDetail {
   createdAt: string
   slug: string
   serial: string
+  code: string
+  usedBySlug: string | null
+  expiredAt: string
 }
 
 export interface IUseGiftCardResponse {

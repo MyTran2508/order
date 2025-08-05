@@ -113,6 +113,77 @@
     "clearFilter": "Clear Filter",
     "exportAll": "Export All",
     "coinEarned": "Coin earned",
-    "coinSpent": "Coin used"
+    "coinSpent": "Coin used",
+    "giftCard": {
+      "giftCardHistory": "Gift Card History",
+      "transactions": "Gift Card Transactions",
+      "status": {
+        "label": "Status",
+        "all": "All Status",
+        "available": "Available",
+        "used": "Used",
+        "expired": "Expired"
+      },
+      "defaultTitle": "Gift Card",
+      "points": "points",
+      "expiryDate": "Expires",
+      "noGiftCards": "No gift cards found",
+      "noGiftCardsDescription": "Your gift card transactions will appear here",
+      "loadError": "Failed to load gift cards. Please try again.",
+      "usedAt": "Used at",
+      "usedBy": "Used by",
+      "expiredAt": "Expired at",
+      "serial": "Serial Number",
+      "code": "Gift Card Code",
+      "createdAt": "Created at",
+      "owner": "Owner",
+      "expiredMessage": "This gift card has expired and cannot be used.",
+      "usedMessage": "This gift card has already been used."
+    },
+    "common": {
+      "filter": "Filter",
+      "copy": "Copy",
+      "fromDate": "From Date",
+      "toDate": "To Date",
+      "error": "Something went wrong",
+      "clearFilters": "Clear Filters",
+      "noMoreResults": "No more results to show",
+      "showingResults": "Showing {{current}} of {{total}} results",
+      "collapse": "Collapse",
+      "viewDetails": "View Details"
+    },
+    "cardOrder": {
+      "orders": "Gift Card Orders",
+      "status": {
+        "label": "Status",
+        "all": "All Status",
+        "pending": "Pending",
+        "completed": "Completed",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      },
+      "quantity": "Quantity",
+      "points": "Coins",
+      "total": "Total",
+      "noOrders": "No gift card orders found",
+      "noOrdersDescription": "Your gift card orders will appear here",
+      "loadError": "Failed to load gift card orders. Please try again.",
+      "paymentInfo": "Payment Information",
+      "paymentMethod": "Payment Method",
+      "paymentStatus": "Payment Status",
+      "transactionId": "Transaction ID",
+      "paymentDate": "Payment Date",
+      "giftCardInfo": "Gift Card Information",
+      "cardType": "Card Type",
+      "cardPrice": "Card Price",
+      "giftCardCodes": "Gift Cards",
+      "code": "Code",
+      "serial": "Serial",
+      "expires": "Expires",
+      "used": "Used",
+      "recipients": "Recipients",
+      "message": "Message",
+      "noName": "_____"
+    }
   }
 }

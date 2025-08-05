@@ -113,6 +113,77 @@
     "clearFilter": "Xóa lọc",
     "exportAll": "Xuất tất cả",
     "coinEarned": "Nhận xu",
-    "coinSpent": "Dùng xu"
+    "coinSpent": "Dùng xu",
+    "giftCard": {
+      "giftCardHistory": "Lịch sử thẻ quà tặng",
+      "transactions": "Giao dịch thẻ quà tặng",
+      "status": {
+        "label": "Trạng thái",
+        "all": "Tất cả trạng thái",
+        "available": "Khả dụng",
+        "used": "Đã sử dụng",
+        "expired": "Hết hạn"
+      },
+      "defaultTitle": "Thẻ quà tặng",
+      "points": "điểm",
+      "expiryDate": "Hết hạn",
+      "noGiftCards": "Không tìm thấy thẻ quà tặng",
+      "noGiftCardsDescription": "Giao dịch thẻ quà tặng của bạn sẽ hiển thị tại đây",
+      "loadError": "Không thể tải thẻ quà tặng. Vui lòng thử lại.",
+      "usedAt": "Đã sử dụng vào",
+      "usedBy": "Được sử dụng bởi",
+      "expiredAt": "Hết hạn vào",
+      "serial": "Số seri",
+      "code": "Mã thẻ quà tặng",
+      "createdAt": "Tạo vào lúc",
+      "owner": "Chủ sở hữu",
+      "expiredMessage": "Thẻ quà tặng này đã hết hạn và không thể sử dụng.",
+      "usedMessage": "Thẻ quà tặng này đã được sử dụng."
+    },
+    "common": {
+      "filter": "Lọc",
+      "copy": "Sao chép",
+      "fromDate": "Từ ngày",
+      "toDate": "Đến ngày",
+      "error": "Đã có lỗi xảy ra",
+      "clearFilters": "Xóa bộ lọc",
+      "noMoreResults": "Đã hiển thị tất cả kết quả",
+      "showingResults": "Hiển thị {{current}} trong tổng số {{total}} kết quả",
+      "collapse": "Thu gọn",
+      "viewDetails": "Xem chi tiết"
+    },
+    "cardOrder": {
+      "orders": "Đơn hàng thẻ quà tặng",
+      "status": {
+        "label": "Trạng thái",
+        "all": "Tất cả trạng thái",
+        "pending": "Đang chờ",
+        "completed": "Hoàn thành",
+        "failed": "Thất bại",
+        "cancelled": "Đã hủy"
+      },
+      "quantity": "Số lượng",
+      "points": "Xu",
+      "total": "Tổng cộng",
+      "noOrders": "Không tìm thấy đơn hàng thẻ quà tặng",
+      "noOrdersDescription": "Đơn hàng thẻ quà tặng của bạn sẽ hiển thị tại đây",
+      "loadError": "Không thể tải đơn hàng thẻ quà tặng. Vui lòng thử lại.",
+      "paymentInfo": "Thông tin thanh toán",
+      "paymentMethod": "Phương thức thanh toán",
+      "paymentStatus": "Trạng thái thanh toán",
+      "transactionId": "Mã giao dịch",
+      "paymentDate": "Ngày thanh toán",
+      "giftCardInfo": "Thông tin thẻ quà tặng",
+      "cardType": "Loại thẻ",
+      "cardPrice": "Giá thẻ",
+      "giftCardCodes": "Thẻ quà tặng",
+      "code": "Mã thẻ",
+      "serial": "Số serial",
+      "expires": "Hết hạn",
+      "used": "Đã sử dụng",
+      "recipients": "Người nhận",
+      "message": "Tin nhắn",
+      "noName": "_____"
+    }
   }
 }
