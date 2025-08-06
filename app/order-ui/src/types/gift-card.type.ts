@@ -9,6 +9,7 @@ export interface IGiftCard {
   points: number
   price: number
   isActive: boolean
+  version: number
 }
 
 export interface IGiftCardRequest {
@@ -36,6 +37,7 @@ export interface IGiftCardUpdateRequest {
   price?: number
   file?: File
   isActive?: boolean
+  version?: number
 }
 
 export interface IGetGiftCardsRequest {
