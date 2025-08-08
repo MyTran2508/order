@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
 
 import {
   Pagination,
@@ -10,7 +11,12 @@ import {
   PaginationNext,
   PaginationPrevious,
   Button,
-  Badge
+  Badge,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from '@/components/ui'
 
 import { useOrders, usePagination } from '@/hooks'
@@ -19,23 +25,25 @@ import { publicFileURL, ROUTE, VOUCHER_TYPE } from '@/constants'
 import OrderStatusBadge from '@/components/app/badge/order-status-badge'
 import { IOrder, OrderStatus } from '@/types'
 import { OrderHistorySkeleton } from '@/components/app/skeleton'
-import { calculateOrderItemDisplay, calculatePlacedOrderTotals, capitalizeFirstLetter, formatCurrency, showErrorToast } from '@/utils'
+import {
+  calculateOrderItemDisplay,
+  calculatePlacedOrderTotals,
+  capitalizeFirstLetter,
+  formatCurrency,
+  showErrorToast,
+} from '@/utils'
 import { CancelOrderDialog } from '@/components/app/dialog'
 
-export default function CustomerOrderTabsContent({
-  status,
-}: {
-  status: OrderStatus
-}) {
+export default function CustomerOrderTabsContent() {
   const { t } = useTranslation(['menu'])
+  const { t: tProfile } = useTranslation(['profile'])
+
   const navigate = useNavigate()
   const { userInfo, getUserInfo } = useUserStore()
   const { pagination, handlePageChange } = usePagination()
   const { setOrderItems } = useUpdateOrderStore()
-  const {
-    data: order,
-    isLoading,
-  } = useOrders({
+  const [status, setStatus] = useState<OrderStatus>(OrderStatus.ALL)
+  const { data: order, isLoading } = useOrders({
     page: pagination.pageIndex,
     size: pagination.pageSize,
     owner: userInfo?.slug,
@@ -56,6 +64,29 @@ export default function CustomerOrderTabsContent({
 
   return (
     <div>
+      {/* Status Filter */}
+      <div className="mb-4 flex justify-end">
+        <Select
+          value={status}
+          onValueChange={(value: OrderStatus) => setStatus(value)}
+        >
+          <SelectTrigger className="w-48">
+            <SelectValue placeholder={t('order.selectStatus')} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value={OrderStatus.ALL}>
+              {tProfile('profile.all')}
+            </SelectItem>
+            <SelectItem value={OrderStatus.SHIPPING}>
+              {tProfile('profile.shipping')}
+            </SelectItem>
+            <SelectItem value={OrderStatus.COMPLETED}>
+              {tProfile('profile.completed')}
+            </SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
       {order?.result.items.length ? (
         <div className="flex flex-col gap-4">
           {order.result.items.map((orderItem) => {
@@ -66,8 +97,11 @@ export default function CustomerOrderTabsContent({
             const cartTotals = calculatePlacedOrderTotals(displayItems, voucher)
             // console.log(cartTotals)
             return (
-              <div key={orderItem.slug} className="flex flex-col gap-4 p-0 mt-2 bg-white border rounded-lg dark:bg-transparent">
-                <div className="flex items-center w-full gap-4 p-4 border-b bg-primary/15 dark:bg-muted-foreground/10">
+              <div
+                key={orderItem.slug}
+                className="mt-2 flex flex-col gap-4 rounded-lg border bg-white p-0 dark:bg-transparent"
+              >
+                <div className="flex w-full items-center gap-4 border-b bg-primary/15 p-4 dark:bg-muted-foreground/10">
                   <span className="text-xs text-muted-foreground">
                     {moment(orderItem.createdAt).format('HH:mm:ss DD/MM/YYYY')}
                   </span>
@@ -77,35 +111,55 @@ export default function CustomerOrderTabsContent({
                 <div className="px-4 pb-4">
                   <div className="flex flex-col divide-y">
                     {orderItems.map((product) => (
-                      <div key={product.slug} className="grid grid-cols-12 gap-2 py-4">
+                      <div
+                        key={product.slug}
+                        className="grid grid-cols-12 gap-2 py-4"
+                      >
                         <div className="relative col-span-3 sm:col-span-2">
                           <img
                             src={`${publicFileURL}/${product.variant.product.image}`}
                             alt={product.variant.product.name}
-                            className="object-cover h-16 rounded-md sm:h-28 sm:w-36"
+                            className="h-16 rounded-md object-cover sm:h-28 sm:w-36"
                           />
-                          <div className="absolute flex items-center justify-center w-6 h-6 text-xs text-white rounded-full sm:text-sm -right-2 -bottom-2 sm:-right-4 lg:right-4 xl:-right-4 sm:w-10 sm:h-10 bg-primary">
+                          <div className="absolute -bottom-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs text-white sm:-right-4 sm:h-10 sm:w-10 sm:text-sm lg:right-4 xl:-right-4">
                             x{product.quantity}
                           </div>
                         </div>
-                        <div className="flex flex-col justify-between col-span-9 sm:col-span-10">
-                          <div className='flex flex-col gap-1'>
-                            <span className="flex flex-col gap-1 text-sm font-semibold truncate sm:flex-row sm:text-base">
-                              {product.variant.product.name} <Badge variant='outline' className='text-xs w-fit border-primary text-primary bg-primary/10'>{capitalizeFirstLetter(product.variant.size.name)}</Badge>
+                        <div className="col-span-9 flex flex-col justify-between sm:col-span-10">
+                          <div className="flex flex-col gap-1">
+                            <span className="flex flex-col gap-1 truncate text-sm font-semibold sm:flex-row sm:text-base">
+                              {product.variant.product.name}{' '}
+                              <Badge
+                                variant="outline"
+                                className="w-fit border-primary bg-primary/10 text-xs text-primary"
+                              >
+                                {capitalizeFirstLetter(
+                                  product.variant.size.name,
+                                )}
+                              </Badge>
                             </span>
                           </div>
-                          <div className='flex justify-end w-full'>
+                          <div className="flex w-full justify-end">
                             {(() => {
-                              const displayItem = displayItems.find(di => di.slug === product.slug)
+                              const displayItem = displayItems.find(
+                                (di) => di.slug === product.slug,
+                              )
                               const original = product.variant.price || 0
-                              const priceAfterPromotion = displayItem?.priceAfterPromotion || 0
+                              const priceAfterPromotion =
+                                displayItem?.priceAfterPromotion || 0
                               const finalPrice = displayItem?.finalPrice || 0
 
                               const isSamePriceVoucher =
-                                voucher?.type === VOUCHER_TYPE.SAME_PRICE_PRODUCT &&
-                                voucher?.voucherProducts?.some(vp => vp.product?.slug === product.variant.product.slug)
+                                voucher?.type ===
+                                  VOUCHER_TYPE.SAME_PRICE_PRODUCT &&
+                                voucher?.voucherProducts?.some(
+                                  (vp) =>
+                                    vp.product?.slug ===
+                                    product.variant.product.slug,
+                                )
 
-                              const hasPromotionDiscount = (displayItem?.promotionDiscount || 0) > 0
+                              const hasPromotionDiscount =
+                                (displayItem?.promotionDiscount || 0) > 0
 
                               const displayPrice = isSamePriceVoucher
                                 ? finalPrice
@@ -119,11 +173,11 @@ export default function CustomerOrderTabsContent({
                               return (
                                 <div className="flex items-center gap-1">
                                   {shouldShowLineThrough && (
-                                    <span className="text-xs line-through sm:text-sm text-muted-foreground">
+                                    <span className="text-xs text-muted-foreground line-through sm:text-sm">
                                       {formatCurrency(original)}
                                     </span>
                                   )}
-                                  <span className="text-sm sm:text-md">
+                                  <span className="sm:text-md text-sm">
                                     {formatCurrency(displayPrice)}
                                   </span>
                                 </div>
@@ -131,37 +185,40 @@ export default function CustomerOrderTabsContent({
                             })()}
                           </div>
                         </div>
-
                       </div>
                     ))}
                   </div>
-                  <div className='flex justify-end w-full mt-4'>
-                    <div className="flex flex-col gap-2 justify-end w-[20rem]">
-                      <div className="flex justify-between w-full pb-2 border-b">
-                        <h3 className="text-sm font-semibold">{t('order.total')}</h3>
+                  <div className="mt-4 flex w-full justify-end">
+                    <div className="flex w-[20rem] flex-col justify-end gap-2">
+                      <div className="flex w-full justify-between border-b pb-2">
+                        <h3 className="text-sm font-semibold">
+                          {t('order.total')}
+                        </h3>
                         <p className="text-sm font-semibold">
                           {`${formatCurrency(cartTotals?.subTotalBeforeDiscount || 0)}`}
                         </p>
                       </div>
-                      <div className="flex justify-between w-full pb-2 border-b">
+                      <div className="flex w-full justify-between border-b pb-2">
                         <h3 className="text-sm font-medium text-muted-foreground">
                           {t('order.promotionDiscount')}
                         </h3>
                         <p className="text-sm font-semibold text-muted-foreground">
-                          - {`${formatCurrency(cartTotals?.promotionDiscount || 0)}`}
+                          -{' '}
+                          {`${formatCurrency(cartTotals?.promotionDiscount || 0)}`}
                         </p>
                       </div>
-                      <div className="flex justify-between w-full pb-2 border-b">
-                        <h3 className="text-sm italic font-medium text-green-500">
+                      <div className="flex w-full justify-between border-b pb-2">
+                        <h3 className="text-sm font-medium italic text-green-500">
                           {t('order.voucher')}
                         </h3>
-                        <p className="text-sm italic font-semibold text-green-500">
-                          - {`${formatCurrency(cartTotals?.voucherDiscount || 0)}`}
+                        <p className="text-sm font-semibold italic text-green-500">
+                          -{' '}
+                          {`${formatCurrency(cartTotals?.voucherDiscount || 0)}`}
                         </p>
                       </div>
                       <div className="flex flex-col">
-                        <div className="flex justify-between w-full">
-                          <h3 className="font-semibold text-md">
+                        <div className="flex w-full justify-between">
+                          <h3 className="text-md font-semibold">
                             {t('order.totalPayment')}
                           </h3>
                           <p className="text-lg font-extrabold text-primary">
@@ -175,16 +232,20 @@ export default function CustomerOrderTabsContent({
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2 pt-4 bg-gray-50 dark:bg-transparent sm:flex-row">
-                    <NavLink to={`${ROUTE.CLIENT_ORDER_HISTORY}?order=${orderItem.slug}`}>
+                  <div className="flex items-center justify-between gap-2 bg-gray-50 pt-4 dark:bg-transparent sm:flex-row">
+                    <NavLink
+                      to={`${ROUTE.CLIENT_ORDER_HISTORY}?order=${orderItem.slug}`}
+                    >
                       <Button>{t('order.viewDetail')}</Button>
                     </NavLink>
                     {orderItem.status === OrderStatus.PENDING && (
                       <div className="flex gap-2 sm:mt-0">
                         <CancelOrderDialog order={orderItem} />
                         <Button
-                          disabled={moment(orderItem.createdAt).isBefore(moment().subtract(15, 'minutes'))}
-                          className='text-orange-500 border-orange-500 hover:text-white hover:bg-orange-500'
+                          disabled={moment(orderItem.createdAt).isBefore(
+                            moment().subtract(15, 'minutes'),
+                          )}
+                          className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
                           variant="outline"
                           onClick={() => handleUpdateOrder(orderItem)}
                         >
@@ -199,13 +260,13 @@ export default function CustomerOrderTabsContent({
           })}
         </div>
       ) : (
-        <div className="text-center h-[50vh] flex justify-center items-center">
+        <div className="flex h-[50vh] items-center justify-center text-center">
           {t('order.noOrders')}
         </div>
       )}
 
       {order && order?.result.totalPages > 0 && (
-        <div className="flex items-center justify-center py-4 space-x-2">
+        <div className="flex items-center justify-center space-x-2 py-4">
           <Pagination>
             <PaginationContent>
               <PaginationItem>
