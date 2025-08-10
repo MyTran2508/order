@@ -114,6 +114,8 @@
     "exportAll": "Export All",
     "coinEarned": "Coin earned",
     "coinSpent": "Coin used",
+    "productOrders": "Products",
+    "giftCards": "Gift Cards",
     "giftCard": {
       "giftCardHistory": "Gift Card History",
       "transactions": "Gift Card Transactions",
@@ -154,6 +156,7 @@
     },
     "cardOrder": {
       "orders": "Gift Card Orders",
+      "giftCard": "Gift Card",
       "status": {
         "label": "Status",
         "all": "All Status",
@@ -165,6 +168,9 @@
       "quantity": "Quantity",
       "points": "Coins",
       "total": "Total",
+      "totalPayment": "Total Payment",
+      "orderDetails": "Order Details",
+      "recipient": "recipient",
       "noOrders": "No gift card orders found",
       "noOrdersDescription": "Your gift card orders will appear here",
       "loadError": "Failed to load gift card orders. Please try again.",
