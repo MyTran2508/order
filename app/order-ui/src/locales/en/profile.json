@@ -140,8 +140,6 @@
       "code": "Gift Card Code",
       "createdAt": "Created at",
       "owner": "Owner",
-      "expiredMessage": "This gift card has expired and cannot be used.",
-      "usedMessage": "This gift card has already been used.",
       "copyCode": "Copy Code"
     },
     "common": {

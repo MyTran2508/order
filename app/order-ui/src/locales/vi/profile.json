@@ -140,8 +140,6 @@
       "code": "Mã thẻ quà tặng",
       "createdAt": "Tạo vào lúc",
       "owner": "Chủ sở hữu",
-      "expiredMessage": "Thẻ quà tặng này đã hết hạn và không thể sử dụng.",
-      "usedMessage": "Thẻ quà tặng này đã được sử dụng.",
       "copyCode": "Sao chép mã"
     },
     "common": {
