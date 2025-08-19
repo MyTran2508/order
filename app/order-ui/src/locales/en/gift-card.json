@@ -2,6 +2,7 @@
     "giftCard": {
         "giftCard": "Gift Card",
         "pageTitle": "Gift Card Management",
+        "menuPageTitle": "Purchase Gift Card",
         "clientPageTitle": "Gift Cards",
         "noGiftCardsAvailable": "No gift cards available at the moment",
         "buyNow": "Buy Now",
@@ -147,7 +148,15 @@
             "updateSuccess": "Update successful",
             "lockAll": "Lock All Features",
             "unlockAll": "Unlock All Features"
-        }
+        },
+        "customer": {
+            "title": "Customer",
+            "customerPhone": "Customer Phone",
+            "customerName": "Customer Name",
+            "addCustomer": "Add Customer",
+            "enterPhone": "Enter customer phone number"
+        },
+        "cashierName": "Cashier Name"
     },
     "schema": {
         "title": {

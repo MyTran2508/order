@@ -2,6 +2,7 @@
     "giftCard": {
         "giftCard": "Thẻ quà tặng",
         "pageTitle": "Quản lý thẻ quà tặng",
+        "menuPageTitle": "Mua thẻ quà tặng",
         "clientPageTitle": "Thẻ quà tặng",
         "noGiftCardsAvailable": "Hiện tại không có thẻ quà tặng nào",
         "buyNow": "Mua ngay",
@@ -147,7 +148,15 @@
             "updateSuccess": "Cập nhật thành công",
             "lockAll": "Khóa tất cả tính năng",
             "unlockAll": "Mở khóa tất cả tính năng"
-        }
+        },
+        "customer":{
+            "title": "Khách hàng",
+            "customerPhone": "Số điện thoại khách hàng",
+            "customerName": "Tên khách hàng",
+            "addCustomer": "Thêm khách hàng",
+            "enterPhone": "Nhập số điện thoại khách hàng"
+        },
+        "cashierName": "Tên thu ngân"
     },
     "schema": {
         "title": {
