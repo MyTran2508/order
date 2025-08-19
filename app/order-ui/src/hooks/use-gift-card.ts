@@ -54,6 +54,9 @@ export const useUpdateGiftCard = () => {
     }) => {
       return updateGiftCard(data, slug)
     },
+    meta: {
+      ignoreGlobalError: true,
+    },
   })
 }
 
@@ -114,6 +117,7 @@ export const useSyncGiftCard = (
         price: query.data.result.price || 0,
         quantity: giftCardItem?.quantity || 1,
         isActive: query.data.result.isActive,
+        version: query.data.result.version,
       }
 
       // Synchronize local storage with server data
